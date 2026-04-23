@@ -59,53 +59,123 @@
 
     main {
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 4rem 2rem;
-      text-align: center;
+      max-width: 860px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem;
     }
 
-    .hero-label {
+    .intro {
+      margin-bottom: 4rem;
+    }
+
+    .intro-label {
       font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
     }
 
-    h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
+    .intro h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
       font-weight: 800;
       letter-spacing: -0.03em;
       line-height: 1.1;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
     }
 
-    .subtitle {
-      font-size: 1.1rem;
+    .intro p {
+      font-size: 1.05rem;
       color: var(--muted);
-      max-width: 480px;
       line-height: 1.6;
-      margin-bottom: 2.5rem;
+      max-width: 480px;
     }
 
-    .cta {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
+    .apps {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .app-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
       text-decoration: none;
-      padding: 0.75rem 1.75rem;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: opacity 0.15s;
+      color: inherit;
+      transition: border-color 0.15s, background 0.15s;
     }
 
-    .cta:hover {
-      opacity: 0.85;
+    .app-card:hover {
+      border-color: #3a3a3a;
+      background: #1f1f1f;
+    }
+
+    .app-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+    }
+
+    .app-icon.green { background: #1a2e1a; }
+    .app-icon.purple { background: #1e1a2e; }
+
+    .app-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .app-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .app-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      background: #252525;
+      color: var(--muted);
+    }
+
+    .app-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .app-arrow {
+      color: #444;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      align-self: center;
+      transition: color 0.15s;
+    }
+
+    .app-card:hover .app-arrow {
+      color: var(--muted);
     }
 
     footer {
@@ -122,17 +192,44 @@
   <header>
     <a href="/" class="logo">Odeba</a>
     <nav>
-      <a href="#">About</a>
-      <a href="#">Work</a>
       <a href="mailto:contact@odeba.net">Contact</a>
     </nav>
   </header>
 
   <main>
-    <p class="hero-label">Coming soon</p>
-    <h1>Something is<br>being built.</h1>
-    <p class="subtitle">More details on the way. Check back soon.</p>
-    <a href="mailto:contact@odeba.net" class="cta">Get in touch</a>
+    <div class="intro">
+      <p class="intro-label">Apps</p>
+      <h1>Small apps,<br>big ideas.</h1>
+      <p>A collection of apps built for real needs. Simple, focused, and made to last.</p>
+    </div>
+
+    <div class="apps">
+
+      <a href="https://spotmystatus.com" class="app-card" target="_blank" rel="noopener">
+        <div class="app-icon green">🎵</div>
+        <div class="app-body">
+          <div class="app-header">
+            <span class="app-name">SpotMyStatus</span>
+            <span class="app-badge">Web</span>
+          </div>
+          <p class="app-desc">Sync your Spotify now-playing directly to your Slack status. Let your teammates know what's fueling your focus.</p>
+        </div>
+        <span class="app-arrow">↗</span>
+      </a>
+
+      <div class="app-card" style="cursor: default;">
+        <div class="app-icon purple">🗺️</div>
+        <div class="app-body">
+          <div class="app-header">
+            <span class="app-name">TasteMap</span>
+            <span class="app-badge">iOS</span>
+            <span class="app-badge">Coming soon</span>
+          </div>
+          <p class="app-desc">Track every cuisine you've tried across the world. Log dishes, explore a gamified world map, and build a wishlist of flavors still to discover.</p>
+        </div>
+      </div>
+
+    </div>
   </main>
 
   <footer>
