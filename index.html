@@ -98,6 +98,10 @@
       color: var(--text);
     }
 
+    nav a.active {
+      color: var(--text);
+    }
+
     main {
       flex: 1;
       max-width: 860px;
@@ -106,6 +110,14 @@
       padding: 6rem 2rem 5rem;
       position: relative;
       z-index: 1;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
     }
 
     .intro {
@@ -254,6 +266,137 @@
       transform: translate(2px, -2px);
     }
 
+    /* About page */
+    .about-hero {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+      min-height: 420px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .about-hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: right center;
+    }
+
+    .about-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(8,8,16,0.72) 38%, rgba(8,8,16,0.1) 70%, transparent 100%),
+                  linear-gradient(to top, rgba(8,8,16,0.5) 0%, transparent 40%);
+    }
+
+    .about-hero-content {
+      position: relative;
+      padding: 2.5rem 2.25rem;
+      max-width: 420px;
+    }
+
+    .about-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 1.25rem;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid rgba(232,121,160,0.25);
+      border-radius: 100px;
+      background: rgba(232,121,160,0.08);
+    }
+
+    .about-hero-content h1 {
+      font-size: clamp(2.2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      background: linear-gradient(160deg, #ffffff 40%, #a78bfa 75%, #e879a0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .about-hero-content p {
+      font-size: 0.95rem;
+      color: rgba(240,240,248,0.7);
+      line-height: 1.7;
+    }
+
+    .about-hero-content p strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .about-hero-caption {
+      position: absolute;
+      bottom: 1rem;
+      right: 1.25rem;
+      font-size: 0.75rem;
+      color: rgba(240,240,248,0.35);
+      letter-spacing: 0.02em;
+    }
+
+    .facts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .facts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .fact {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .about-links {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .about-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.45rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .about-link:hover {
+      border-color: var(--border-hover);
+      color: var(--text);
+      background: var(--surface-hover);
+    }
+
     footer {
       position: relative;
       z-index: 1;
@@ -268,51 +411,99 @@
 <body>
 
   <header>
-    <a href="/" class="logo">Odeba</a>
+    <a href="#" class="logo" data-page="apps">Odeba</a>
     <nav>
       <a href="mailto:contact@odeba.net">Contact</a>
+      <a href="#" data-page="about">About me</a>      
     </nav>
   </header>
 
   <main>
-    <div class="intro">
-      <p class="intro-label">Apps</p>
-      <h1>Small apps,<br>big ideas.</h1>
-      <p>A collection of apps built for real needs. Simple, focused, and made to last.</p>
-    </div>
-
-    <div class="apps">
-
-      <a href="https://spotmystatus.com" class="app-card" target="_blank" rel="noopener">
-        <div class="app-icon green">🎵</div>
-        <div class="app-body">
-          <div class="app-header">
-            <span class="app-name">SpotMyStatus</span>
-            <span class="app-badge">Web</span>
-          </div>
-          <p class="app-desc">Sync your Spotify now-playing directly to your Slack status. Let your teammates know what's fueling your focus.</p>
-        </div>
-        <span class="app-arrow">↗</span>
-      </a>
-
-      <div class="app-card" style="cursor: default;">
-        <div class="app-icon purple">🗺️</div>
-        <div class="app-body">
-          <div class="app-header">
-            <span class="app-name">TasteMap</span>
-            <span class="app-badge">iOS</span>
-            <span class="app-badge">Coming soon</span>
-          </div>
-          <p class="app-desc">Track every cuisine you've tried across the world. Log dishes, explore a gamified world map, and build a wishlist of flavors still to discover.</p>
-        </div>
+    <div id="page-apps" class="page active">
+      <div class="intro">
+        <p class="intro-label">Apps</p>
+        <h1>Small apps,<br>big ideas.</h1>
+        <p>A collection of apps built for real needs. Simple, focused, and made to last.</p>
       </div>
 
+      <div class="apps">
+
+        <a href="https://spotmystatus.com" class="app-card" target="_blank" rel="noopener">
+          <div class="app-icon green">🎵</div>
+          <div class="app-body">
+            <div class="app-header">
+              <span class="app-name">SpotMyStatus</span>
+              <span class="app-badge">Web</span>
+            </div>
+            <p class="app-desc">Sync your Spotify now-playing directly to your Slack status. Let your teammates know what's fueling your focus.</p>
+          </div>
+          <span class="app-arrow">↗</span>
+        </a>
+
+        <div class="app-card" style="cursor: default;">
+          <div class="app-icon purple">🗺️</div>
+          <div class="app-body">
+            <div class="app-header">
+              <span class="app-name">TasteMap</span>
+              <span class="app-badge">iOS</span>
+              <span class="app-badge">Coming soon</span>
+            </div>
+            <p class="app-desc">Track every cuisine you've tried across the world. Log dishes, explore a gamified world map, and build a wishlist of flavors still to discover.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="page-about" class="page">
+      <div class="about-hero">
+        <img src="diving.jpg" alt="Gio skydiving" />
+        <div class="about-hero-overlay"></div>
+        <div class="about-hero-content">
+          <p class="about-label">About me</p>
+          <h1>Builder,<br>wanderer.</h1>
+          <p>I'm <strong>Gio</strong> — I've lived in <strong>8 countries</strong> and visited 36. When I'm not shipping apps, I'm probably hiking somewhere new, playing football, cooking Khachapuri, or chasing down a street food stall I'll definitely miss a flight for.</p>
+        </div>
+        <span class="about-hero-caption">somewhere above 10,000 ft</span>
+      </div>
+
+      <div class="about-links">
+        <a href="https://www.linkedin.com/in/giorgimodebadze/" class="about-link" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:hello@odeba.net" class="about-link">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+          Email
+        </a>
+      </div>
     </div>
   </main>
 
   <footer>
     &copy; 2026 Odeba
   </footer>
+
+  <script>
+    const pages = document.querySelectorAll('.page');
+    const navLinks = document.querySelectorAll('[data-page]');
+
+    function showPage(name) {
+      pages.forEach(p => p.classList.toggle('active', p.id === 'page-' + name));
+      navLinks.forEach(a => a.classList.toggle('active', a.dataset.page === name));
+      location.hash = name === 'apps' ? '' : name;
+    }
+
+    navLinks.forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        showPage(a.dataset.page);
+      });
+    });
+
+    const hash = location.hash.slice(1);
+    if (hash === 'about') showPage('about');
+  </script>
 
 </body>
 </html>
