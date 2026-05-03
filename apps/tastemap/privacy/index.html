@@ -238,6 +238,13 @@
     }
 
     footer a:hover { color: var(--muted); }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
   </style>
 </head>
 <body>
@@ -336,13 +343,16 @@
 
     <section>
       <h2>Contact</h2>
-      <p>Questions about this policy? Email us at <a href="mailto:hello@odeba.net">hello@odeba.net</a>.</p>
+      <p>Questions about this policy or TasteMap support? Visit the <a href="../support/">TasteMap support page</a> or email us at <a href="mailto:tastemap@odeba.net">tastemap@odeba.net</a>.</p>
     </section>
   </main>
 
   <footer>
     <span>&copy; 2026 Odeba</span>
-    <a href="../">← Back to TasteMap</a>
+    <span class="footer-links">
+      <a href="../support/">TasteMap Support</a>
+      <a href="../">← Back to TasteMap</a>
+    </span>
   </footer>
 
 </body>
